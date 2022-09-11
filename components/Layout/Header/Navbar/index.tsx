@@ -1,23 +1,36 @@
+/* eslint-disable @next/next/no-img-element */
 import { Navbar } from 'flowbite-react';
+import { useEffect, useState } from 'react';
+import cx from 'classnames';
+import { LanguageDropdown } from '../../../Dropdowns';
 
 const CustomNavbar = () => {
+  const [isDark, setIsDark] = useState(false);
+
+  useEffect(() => {
+    const theme = localStorage.getItem('color-theme');
+    if (theme === 'dark') setIsDark(true);
+    else setIsDark(false);
+  }, []);
+
   const toggleTheme = () => {
     const html = document.querySelector('html');
     if (html) {
-      const theme = localStorage.getItem('color-theme');
-      if (theme === 'dark') {
+      if (isDark) {
         localStorage.setItem('color-theme', 'light');
         html.classList.remove('dark');
+        setIsDark(false);
       } else {
         localStorage.setItem('color-theme', 'dark');
         html.classList.add('dark');
+        setIsDark(true);
       }
     }
   };
 
   return (
     <Navbar fluid={true} rounded={true}>
-      <Navbar.Brand href='https://flowbite.com/'>
+      <Navbar.Brand href='/'>
         <img
           src='https://flowbite.com/docs/images/logo.svg'
           className='mr-3 h-6 sm:h-9'
@@ -35,7 +48,10 @@ const CustomNavbar = () => {
         <Navbar.Link href='/components'>Components</Navbar.Link>
         <Navbar.Link href='/about'>About Us</Navbar.Link>
         <Navbar.Link href='/contact'>Contact Us</Navbar.Link>
-        <Navbar>
+        <Navbar.Link>
+          <LanguageDropdown />
+        </Navbar.Link>
+        <Navbar.Link>
           <button
             id='theme-toggle'
             type='button'
@@ -43,7 +59,7 @@ const CustomNavbar = () => {
             className='text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5'>
             <svg
               id='theme-toggle-dark-icon'
-              className='hidden w-5 h-5'
+              className={cx('w-5 h-5',{ hidden: isDark })}
               fill='currentColor'
               viewBox='0 0 20 20'
               xmlns='http://www.w3.org/2000/svg'>
@@ -51,7 +67,7 @@ const CustomNavbar = () => {
             </svg>
             <svg
               id='theme-toggle-light-icon'
-              className='hidden w-5 h-5'
+              className={cx('w-5 h-5',{ hidden: !isDark })}
               fill='currentColor'
               viewBox='0 0 20 20'
               xmlns='http://www.w3.org/2000/svg'>
@@ -61,7 +77,7 @@ const CustomNavbar = () => {
                 clipRule='evenodd'></path>
             </svg>
           </button>
-        </Navbar>
+        </Navbar.Link>
         {/* <Navbar.Link href='/navbars'>Contact</Navbar.Link> */}
       </Navbar.Collapse>
     </Navbar>

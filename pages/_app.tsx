@@ -5,28 +5,29 @@ import Layout from '../components/Layout';
 import '../styles/globals.css';
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const verifyTheme =
-    typeof window !== 'undefined'
-      ? localStorage.getItem('color-theme') === 'dark' ||
-        (!('color-theme' in localStorage) &&
-          window.matchMedia('(prefers-color-scheme: dark)').matches)
-      : null;
-  useEffect(() => {
-    if (verifyTheme) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  }, [verifyTheme]);
+  // const verifyTheme =
+  //   typeof window !== 'undefined'
+  //     ? localStorage.getItem('color-theme') === 'dark' ||
+  //       (!('color-theme' in localStorage) &&
+  //         window.matchMedia('(prefers-color-scheme: dark)').matches)
+  //     : null;
+  // useEffect(() => {
+  //   const layout = document.getElementById('layout');
+  //   if (verifyTheme && layout) {
+  //     layout.classList.add('dark');
+  //   } else if (layout) {
+  //     layout.classList.remove('dark');
+  //   }
+  // }, [verifyTheme]);
 
   return (
     <>
       <Script id='dark-mode'>
         {`
            if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.querySelector('html').classList.add('dark');
+            document.getElementById('layout').classList.add('dark');
         } else {
-            document.querySelector('html').classList.remove('dark')
+            document.getElementById('layout').classList.remove('dark')
         }`}
       </Script>
       <Layout>

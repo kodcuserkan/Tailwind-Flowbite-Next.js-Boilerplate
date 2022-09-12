@@ -1,26 +1,20 @@
-const colors = require('tailwindcss/colors')
+const colors = require('tailwindcss/colors');
 
 /**
  * @type {import('@types/tailwindcss/tailwind-config').TailwindConfig}
  */
- module.exports = {
-  content: [
-    "./node_modules/flowbite-react/**/*.js",
-    "./pages/**/*.{ts,tsx}",
-    "./public/**/*.html",
-  ],
-  plugins: [
-    require("flowbite/plugin")
-  ],
+module.exports = {
+  content: ['./node_modules/flowbite-react/**/*.js', './pages/**/*.{ts,tsx}', './public/**/*.html'],
+  plugins: [require('flowbite/plugin')],
   theme: {
     screens: {
-      'xxs': '320px',
-      'xs': '480px',
-      'sm': '640px',
-      'md': '768px',
-      'lg': '1024px',
-      'xl': '1280px',
-      '2xl': '1536px',
+      xxs: '320px',
+      xs: '480px',
+      sm: '640px',
+      md: '768px',
+      lg: '1024px',
+      xl: '1280px',
+      '2xl': '1536px'
     },
     colors: {
       gray: colors.gray,
@@ -35,10 +29,10 @@ const colors = require('tailwindcss/colors')
     },
     fontFamily: {
       sans: ['Graphik', 'sans-serif'],
-      serif: ['Merriweather', 'serif'],
+      serif: ['Merriweather', 'serif']
     },
     extend: {
-      spacing: {
+      width: {
         px: '1px',
         0: '0',
         0.5: '0.125rem',
@@ -63,7 +57,7 @@ const colors = require('tailwindcss/colors')
         24: '6rem',
         28: '7rem',
         32: '8rem',
-        36: '9rem',
+        '36': '9rem',
         40: '10rem',
         44: '11rem',
         48: '12rem',
@@ -73,11 +67,11 @@ const colors = require('tailwindcss/colors')
         64: '16rem',
         72: '18rem',
         80: '20rem',
-        96: '24rem',
+        96: '24rem'
       },
-      borderRadius: {
-        '4xl': '2rem',
-      }
+      // borderRadius: {
+      //   '4xl': '2rem'
+      // }
     }
   },
   darkMode: 'class'

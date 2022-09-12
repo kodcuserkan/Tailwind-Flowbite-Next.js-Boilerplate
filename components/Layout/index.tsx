@@ -8,7 +8,7 @@ type Props = {
 
 function Layout({ children }: Props) {
   return (
-    <div className="min-h-screen p-0 m-0">
+    <div className="min-h-screen p-0 m-0" id="layout">
       <Header />
       <main>{children}</main>
       <Footer />

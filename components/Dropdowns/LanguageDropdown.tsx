@@ -24,19 +24,19 @@ const LanguageDropdown = () => {
   };
 
   return (
-    <div className='flex items-center flex-col md:order-2'>
+    <div className='flex xxs:items-start md:items-center flex-col md:order-2 relative'>
       <button
         type='button'
         onClick={() => setIsHidden(!isHidden)}
         data-dropdown-toggle='language-dropdown-menu'
-        className='inline-flex justify-center items-center p-2 text-sm text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white'>
+        className='inline-flex justify-center max-w-xs items-center p-2 text-sm text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white w-32'>
         {renderFlag(selectedLang, true)}
         {languages.find(({code}) => code === selectedLang)?.name}
       </button>
       {/* Dropdown */}
       <div
         className={cx(
-          'z-50 my-4 text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700',
+          'z-50 my-4 text-base list-none absolute bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700',
           {
             hidden: !isHidden
           }

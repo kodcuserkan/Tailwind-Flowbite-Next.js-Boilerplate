@@ -14,22 +14,22 @@ const CustomNavbar = () => {
   }, []);
 
   const toggleTheme = () => {
-    const html = document.querySelector('html');
-    if (html) {
+    const layout = document.getElementById('layout');
+    if (layout) {
       if (isDark) {
         localStorage.setItem('color-theme', 'light');
-        html.classList.remove('dark');
+        layout.classList.remove('dark');
         setIsDark(false);
       } else {
         localStorage.setItem('color-theme', 'dark');
-        html.classList.add('dark');
+        layout.classList.add('dark');
         setIsDark(true);
       }
     }
   };
 
   return (
-    <Navbar fluid={true} rounded={true}>
+    <Navbar fluid={true}>
       <Navbar.Brand href='/'>
         <img
           src='https://flowbite.com/docs/images/logo.svg'
@@ -48,9 +48,7 @@ const CustomNavbar = () => {
         <Navbar.Link href='/components'>Components</Navbar.Link>
         <Navbar.Link href='/about'>About Us</Navbar.Link>
         <Navbar.Link href='/contact'>Contact Us</Navbar.Link>
-        <Navbar.Link>
-          <LanguageDropdown />
-        </Navbar.Link>
+        <LanguageDropdown />
         <Navbar.Link>
           <button
             id='theme-toggle'
@@ -59,7 +57,7 @@ const CustomNavbar = () => {
             className='text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5'>
             <svg
               id='theme-toggle-dark-icon'
-              className={cx('w-5 h-5',{ hidden: isDark })}
+              className={cx('w-5 h-5', { hidden: isDark })}
               fill='currentColor'
               viewBox='0 0 20 20'
               xmlns='http://www.w3.org/2000/svg'>
@@ -67,7 +65,7 @@ const CustomNavbar = () => {
             </svg>
             <svg
               id='theme-toggle-light-icon'
-              className={cx('w-5 h-5',{ hidden: !isDark })}
+              className={cx('w-5 h-5', { hidden: !isDark })}
               fill='currentColor'
               viewBox='0 0 20 20'
               xmlns='http://www.w3.org/2000/svg'>
